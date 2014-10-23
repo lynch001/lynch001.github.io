@@ -1,53 +1,73 @@
 ---
 layout: default
-title: 一个程序员的自我修养
+title: 朱天杰's博客
 ---
-<h1 class="page-header">
-    分享每天遇到的小东西
-    <small> -- lynch</small>
+
+<!-- Blog Entries Column -->
+<div class="col-md-8">
+
+<h1>
+分享一些小东西
 </h1>
-<!-- First Blog Post -->
-<h2>
-    <a href="#">Blog Post Title</a>
-</h2>
-<p class="lead">
-    by <a href="index.php">Start Bootstrap</a>
-</p>
-<p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-<hr>
-<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-<hr>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
-<a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
 <hr>
 
-<!-- Second Blog Post -->
-<h2>
-    <a href="#">Blog Post Title</a>
-</h2>
-<p class="lead">
-    by <a href="index.php">Start Bootstrap</a>
-</p>
-<p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-<hr>
-<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-<hr>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, quasi, fugiat, asperiores harum voluptatum tenetur a possimus nesciunt quod accusamus saepe tempora ipsam distinctio minima dolorum perferendis labore impedit voluptates!</p>
-<a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+<!-- 遍历分页后的文章 -->
+{% for post in paginator.posts %}
+<h4>
+<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+</h4>
+
+<div class="media">
+{% if post.cover != -1 %}
+<a class="pull-left" href="{{ site.baseurl }}{{ post.url }}">
+<img class="media-object" src="{{ post.cover }}" title="{{ post.title }}" width=160 height=90>
+</a>
+{% endif %}
+<div class="media-body">
+{{ post.abstract }}
+</div>
+</div>
+
+<br >
+<a class="btn btn-primary" href="{{ site.baseurl }}{{ post.url }}">详细阅读<span class="glyphicon glyphicon-chevron-right"></span></a>
 
 <hr>
+{% endfor %}
 
-<!-- Third Blog Post -->
-<h2>
-    <a href="#">Blog Post Title</a>
-</h2>
-<p class="lead">
-    by <a href="index.php">Start Bootstrap</a>
-</p>
-<p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-<hr>
-<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-<hr>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, voluptates, voluptas dolore ipsam cumque quam veniam accusantium laudantium adipisci architecto itaque dicta aperiam maiores provident id incidunt autem. Magni, ratione.</p>
-<a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+{% if paginator.total_pages > 1 %}
+<div>
+<ul class="pagination">
+{% if paginator.previous_page %}
+<li class="previous">
+{% if paginator.previous_page == 1 %}
+<a href="/">&laquo;</a>
+{% else %}
+<a href="{{ paginator.previous_page_path }}">&laquo;</a>
+{% endif %}
+</li>
+{% else %}
+<li class="previous disabled">
+<span>&laquo;</span>
+</li>
+{% endif %}
+
+<li><span>{{ paginator.page }}/{{ paginator.total_pages }}</span></li>
+
+{% if paginator.next_page %}
+<li class="next">
+<a href="{{ paginator.next_page_path }}">&raquo;</a>
+</li>
+{% else %}
+<li class="next disabled">
+<span>&raquo;</span>
+</li>
+{% endif %}
+</ul>
+</div>
+{% endif %}
+
+</div>
+
+{% include recent.html %}
+

@@ -17,7 +17,7 @@
     <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{{site.baseurl}}/stylesheets/blog-post.css" rel="stylesheet">
+    <link href="{{site.baseurl}}/stylesheets/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,43 +43,59 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>Blog Post Title</h1>
+                <h1>{{ page.title }}</h1>
 
                 <!-- Author -->
+				<!--
                 <p class="lead">
-                    by <a href="#">Start Bootstrap</a>
+                    by <a href="#">lynch</a>
                 </p>
-
                 <hr>
-
+				-->
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
-
+                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ page.date | date_to_string }}</p>
                 <hr>
-
+				
+				<!-- Preview Image -->
+				
                 {{content}}
 
-		<hr>
+			<hr>
 		
-		{% include duoshuo.html %}
+			{% if site.related_posts != empty %}
+			<div id="related">
+  				<h2>相关文章</h2>
+    			<ul class="posts">
+	    		{% for post in site.related_posts limit:3 %}
+				<li><span>{{ post.date | date_to_string }}</span> <span class="seperator">~</span> <a href="{{ post.url }}">{{ post.title }}</a></li>
+				{% endfor %}
+				</ul>
+			</div> 
+			<hr>
+			{% endif %}
+
+			{% include ds-comment.html %}
 		
 
             </div>
 	    
-	    {% include category.html %}
+	    {% include about-me.html %}
 
         </div>
         <!-- /.row -->
 
-	{% include foot.html %}
+		{% include foot.html %}		
 
     </div>
     <!-- /.container -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	{% include ds-base.html %}
+
 
 </body>
 
