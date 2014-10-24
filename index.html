@@ -3,69 +3,67 @@ layout: default
 title: 朱天杰's博客
 ---
 
-<!-- Blog Entries Column -->
 <div class="col-md-8">
 
-<h1>
-分享一些小东西
-</h1>
+	<h1>
+	分享一些小东西
+	</h1>
 
-<hr>
+	<hr>
 
-<!-- 遍历分页后的文章 -->
-{% for post in paginator.posts %}
-<h4>
-<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-</h4>
+	<!-- traverse paged posts  -->
+	{% for post in paginator.posts %}
+	<h4>
+		<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+	</h4>
 
-<div class="media">
-{% if post.cover != -1 %}
-<a class="pull-left" href="{{ site.baseurl }}{{ post.url }}">
-<img class="media-object" src="{{ post.cover }}" title="{{ post.title }}" width=160 height=90>
-</a>
-{% endif %}
-<div class="media-body">
-{{ post.abstract }}
-</div>
-</div>
+	<div class="media">
+		<div class="media-body">
+		{{ post.abstract }}
+		</div>
+	</div>
 
-<br >
-<a class="btn btn-primary" href="{{ site.baseurl }}{{ post.url }}">详细阅读<span class="glyphicon glyphicon-chevron-right"></span></a>
+	<br >
+	<a class="btn btn-primary" href="{{ site.baseurl }}{{ post.url }}">详细阅读<span class="glyphicon glyphicon-chevron-right"></span></a>
 
-<hr>
-{% endfor %}
+	<hr>
+	{% endfor %}
 
-{% if paginator.total_pages > 1 %}
-<div>
-<ul class="pagination">
-{% if paginator.previous_page %}
-<li class="previous">
-{% if paginator.previous_page == 1 %}
-<a href="/">&laquo;</a>
-{% else %}
-<a href="{{ paginator.previous_page_path }}">&laquo;</a>
-{% endif %}
-</li>
-{% else %}
-<li class="previous disabled">
-<span>&laquo;</span>
-</li>
-{% endif %}
+	<!-- pagination -->
+	{% if paginator.total_pages > 1 %}
+	<div>
+		<!--previous page arrow -->
+		<ul class="pagination">
+		{% if paginator.previous_page %}
+		<li class="previous">
+			{% if paginator.previous_page == 1 %}
+			<a href="/">&laquo;</a>
+			{% else %}
+			<a href="{{ paginator.previous_page_path }}">&laquo;</a>
+		{% endif %}
+		</li>
+		{% else %}
+		<li class="previous disabled">
+			<span>&laquo;</span>
+		</li>
+		{% endif %}
 
-<li><span>{{ paginator.page }}/{{ paginator.total_pages }}</span></li>
+		<!-- page num -->
+		<li><span>{{ paginator.page }}/{{ paginator.total_pages }}</span></li>
 
-{% if paginator.next_page %}
-<li class="next">
-<a href="{{ paginator.next_page_path }}">&raquo;</a>
-</li>
-{% else %}
-<li class="next disabled">
-<span>&raquo;</span>
-</li>
-{% endif %}
-</ul>
-</div>
-{% endif %}
+		<!-- next page arrow -->
+		{% if paginator.next_page %}
+		<li class="next">
+			<a href="{{ paginator.next_page_path }}">&raquo;</a>
+		</li>
+		{% else %}
+		<li class="next disabled">
+			<span>&raquo;</span>
+		</li>
+		{% endif %}
+		</ul>
+	</div>
+	{% endif %}
 
 </div>
 
