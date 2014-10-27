@@ -2,6 +2,7 @@
 
 layout: post
 title: 周例会小结
+category: team
 
 ---
 
