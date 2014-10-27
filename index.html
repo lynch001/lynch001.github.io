@@ -13,13 +13,13 @@ title: 朱天杰's博客
 
 	<!-- traverse paged posts  -->
 	{% for post in paginator.posts %}
-	<h4>
+	<h2>
 		<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-	</h4>
+	</h2>
 
 	<div class="media">
 		<div class="media-body">
-		{{ post.abstract }}
+		{{ post.excerpt | markdownify }}
 		</div>
 	</div>
 
