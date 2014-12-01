@@ -22,7 +22,10 @@ category: coding
 
 {% highlight c %}
 
-MYSQL *mysql_init(MYSQL *);
+MYSQL *
+mysql_init(
+	MYSQL *
+);
 
 {% endhighlight %}
 
@@ -30,14 +33,17 @@ MYSQL *mysql_init(MYSQL *);
 
 {% highlight c %}
 
-MYSQL *mysql_real_connect(MYSQL *connection,
-			const char *server_host,
-			const char *sql_user_name,
-			const char *sql_password,
-			const char *db_name,
-			unsigned int port_number, // 0则设置端口3306
-			const char *unix_socket_name, // NULL则使用mysql默认设置
-			unsigned int flags);
+MYSQL *
+mysql_real_connect(
+	MYSQL *connection,
+	const char *server_host,
+	const char *sql_user_name,
+	const char *sql_password,
+	const char *db_name,
+	unsigned int port_number, // 0则设置端口3306
+	const char *unix_socket_name, // NULL则使用mysql默认设置
+	unsigned int flags
+);
 
 {% endhighlight c %}
 
@@ -45,7 +51,10 @@ MYSQL *mysql_real_connect(MYSQL *connection,
 
 {% highlight c %}
 
-void mysql_close(MYSQL *connection);
+void 
+mysql_close(
+	MYSQL *connection
+);
 
 {% endhighlight %}
 
@@ -53,9 +62,12 @@ void mysql_close(MYSQL *connection);
 
 {% highlight c %}
 
-int mysql_options(MYSQL *connection,
-			enum option_to_set,
-			const char *argument);
+int 
+mysql_options(
+	MYSQL *connection,
+	enum option_to_set,
+	const char *argument
+);
 
 {% endhighlight %}
 
@@ -88,7 +100,10 @@ connection = mysql_real_connect(connection ...
 
 {% highlight c %}
 
-unsigned int mysql_errno(MYSQL *connection);
+unsigned int 
+mysql_errno(
+	MYSQL *connection
+);
 
 {% endhighlight %}
 
@@ -96,7 +111,10 @@ unsigned int mysql_errno(MYSQL *connection);
 
 {% highlight c %}
 
-char *mysql_error(MYSQL *connection);
+char *
+mysql_error(
+	MYSQL *connection
+);
 
 {% endhighlight %}
 
@@ -106,8 +124,11 @@ char *mysql_error(MYSQL *connection);
 
 {% highlight c %}
 
-int mysql_query(MYSQL *connection, 
-			const char *query)
+int 
+mysql_query(
+	MYSQL *connection, 
+	const char *query
+);
 
 {% endhighlight %}
 
@@ -115,7 +136,10 @@ int mysql_query(MYSQL *connection,
 
 {% highlight c %}
 
-my_ulonglong mysql_affected_rows(MYSQL *connection);
+my_ulonglong 
+mysql_affected_rows(
+	MYSQL *connection
+);
 
 {% endhighlight %}
 
@@ -123,7 +147,10 @@ my_ulonglong mysql_affected_rows(MYSQL *connection);
 
 {% highlight c %}
 
-MYSQL_RES *mysql_store_result(MYSQL *connection);
+MYSQL_RES *
+mysql_store_result(
+	MYSQL *connection
+);
 
 {% endhighlight %}
 
@@ -131,7 +158,10 @@ MYSQL_RES *mysql_store_result(MYSQL *connection);
 
 {% highlight c %}
 
-my_ulonglong mysql_num_rows(MYSQL_RES *result);
+my_ulonglong 
+mysql_num_rows(
+	MYSQL_RES *result
+);
 
 {% endhighlight %}
 
@@ -139,7 +169,10 @@ my_ulonglong mysql_num_rows(MYSQL_RES *result);
 
 {% highlight c %}
 
-MYSQL_ROW mysql_fetch_row(MYSQL_RES *result);
+MYSQL_ROW 
+mysql_fetch_row(
+	MYSQL_RES *result
+);
 
 {% endhighlight %}
 
@@ -147,8 +180,11 @@ MYSQL_ROW mysql_fetch_row(MYSQL_RES *result);
 
 {% highlight c %}
 
-void mysql_data_seek(MYSQL_RES *result, 
-			my_unlonglong offset //行号);
+void 
+mysql_data_seek(
+	MYSQL_RES *result, 
+	my_unlonglong offset //行号
+);
 
 {% endhighlight %}
 
@@ -156,7 +192,10 @@ void mysql_data_seek(MYSQL_RES *result,
 
 {% highlight c %}
 
-MYSQL_ROW_OFFSET mysql_row_tell(MYSQL_RES *result);
+MYSQL_ROW_OFFSET 
+mysql_row_tell(
+	MYSQL_RES *result
+);
 
 {% endhighlight %}
 
@@ -164,8 +203,11 @@ MYSQL_ROW_OFFSET mysql_row_tell(MYSQL_RES *result);
 
 {% highlight c %}
 
-MYSQL_ROW_OFFSET mysql_row_seek(MYSQL_RES *result,
-			MYSQL_ROW_OFFSET offset);
+MYSQL_ROW_OFFSET 
+mysql_row_seek(
+	MYSQL_RES *result,
+	MYSQL_ROW_OFFSET offset
+);
 
 {% endhighlight %}
 
@@ -173,7 +215,10 @@ MYSQL_ROW_OFFSET mysql_row_seek(MYSQL_RES *result,
 
 {% highlight c %}
 
-void mysql_free_result(MYSQL_RES *result);
+void 
+mysql_free_result(
+	MYSQL_RES *result
+);
 
 {% endhighlight %}
 
@@ -181,7 +226,10 @@ void mysql_free_result(MYSQL_RES *result);
 
 {% highlight c %}
 
-MYSQL_RES *mysql_use_result(MYSQL *connection);
+MYSQL_RES *
+mysql_use_result(
+	MYSQL *connection
+);
 
 {% endhighlight %}
 
@@ -191,7 +239,10 @@ MYSQL_RES *mysql_use_result(MYSQL *connection);
 
 {% highlight c %}
 
-unsigned int mysql_field_count(MYSQL *connection);
+unsigned int 
+mysql_field_count(
+	MYSQL *connection
+);
 
 {% endhighlight %}
 
@@ -199,7 +250,10 @@ unsigned int mysql_field_count(MYSQL *connection);
 
 {% highlight c %}
 
-MYSQL_FIELD *mysql_fetch_field(MYSQL_RES *result);
+MYSQL_FIELD *
+mysql_fetch_field(
+	MYSQL_RES *result
+);
 
 {% endhighlight %}
 
