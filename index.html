@@ -3,48 +3,45 @@ layout: default
 title: 朱天杰's博客
 ---
 
-<div class="col-md-12">
-
-	<h1>
-	一些笔记
-	</h1>
-
-	<hr>
-
-	<!-- traverse paged posts  -->
-	{% for post in paginator.posts %}
-	<h2>
-		<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-	</h2>
-
-	<div class="media">
-		<div class="media-body">
-		{{ post.excerpt | markdownify }}
+<div class="row" id="posts">
+	{% for post in paginator.posts  %}
+	<div class="col-md-6 col-sm-12 col-xs-12">
+		<div class="panel panel-{% if post.style %}{{ post.style }}{% else %}{{ "default" }}{% endif %}">
+			<div class="panel-heading">
+				<h3 class="panel-title"><span class="glyphicon glyphicon-file"></span> <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h3>
+			</div>
+			<div class="panel-body">
+				<div class="media">
+					<div class="pull-left" align="center">
+						<p style="font-size: 33px;margin-bottom: -5px;" class="text-{% if post.style %}{{ post.style }}{% else %}{{ "muted" }}{% endif %}">{{ post.date | date: "%d" }}</p>
+						<p class="text-{% if post.style %}{{ post.style }}{% else %}{{ "muted" }}{% endif %}">{{ post.date | date: "%Y-%m" }}</p>
+					</div>
+					<div class="media-body text-{% if post.style %}{{ post.style }}{% else %}{{ "muted" }}{% endif %}" style="padding-left: 5px;">
+						{{ post.excerpt | markdownify }}
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<br >
-	<a class="btn btn-primary" href="{{ site.baseurl }}{{ post.url }}">详细阅读<span class="glyphicon glyphicon-chevron-right"></span></a>
-
-	<hr>
 	{% endfor %}
+</div>
 
-	<!-- pagination -->
-	{% if paginator.total_pages > 1 %}
-	<div>
-		<!--previous page arrow -->
-		<ul class="pagination">
+<!-- pagination -->
+{% if paginator.total_pages > 1 %}
+<div class="pagination-wrap">
+	<!--previous page arrow -->
+	<ul class="pagination">
 		{% if paginator.previous_page %}
 		<li class="previous">
-			{% if paginator.previous_page == 1 %}
-			<a href="/">&laquo;</a>
-			{% else %}
-			<a href="{{ paginator.previous_page_path }}">&laquo;</a>
+		{% if paginator.previous_page == 1 %}
+		<a href="/">&laquo;</a>
+		{% else %}
+		<a href="{{ paginator.previous_page_path }}">&laquo;</a>
 		{% endif %}
 		</li>
 		{% else %}
 		<li class="previous disabled">
-			<span>&laquo;</span>
+		<span>&laquo;</span>
 		</li>
 		{% endif %}
 
@@ -54,15 +51,15 @@ title: 朱天杰's博客
 		<!-- next page arrow -->
 		{% if paginator.next_page %}
 		<li class="next">
-			<a href="{{ paginator.next_page_path }}">&raquo;</a>
+		<a href="{{ paginator.next_page_path }}">&raquo;</a>
 		</li>
 		{% else %}
 		<li class="next disabled">
-			<span>&raquo;</span>
+		<span>&raquo;</span>
 		</li>
 		{% endif %}
-		</ul>
-	</div>
-	{% endif %}
-
+	</ul>
 </div>
+{% endif %}
+
+
