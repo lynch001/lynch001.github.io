@@ -34,9 +34,17 @@ $ sudo apt-get install ruby-dev
 
 {% endhighlight %}
 
-# 另外遇到ExecJS::RuntimeUnavailable错误
+# 另外遇到找不到js运行环境错误
 
-> 添加nodejs运行环境即可
+{% highlight c %}
+
+ExecJS::RuntimeUnavailable
+
+{% endhighlight %}
+
+# 解决方法
+
+添加nodejs运行环境即可
 
 {% highlight sh %}
 
