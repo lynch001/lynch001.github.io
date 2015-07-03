@@ -43,6 +43,9 @@ table th, table td {
 	line-height: 20px;
 	vertical-align: top;
 }
+img {
+    max-width:100%;
+}
 
 .highlight  { background: #ffffff; }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
