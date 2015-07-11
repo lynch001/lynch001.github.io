@@ -16,8 +16,7 @@ category: code
 2. [过滤debug信息,特别是项目中使用的框架的debug信息](http://blog.csdn.net/zuoanren/article/details/8465958)
 3. 使用crontab定时删除或合并一段时间以前的日志
 
-
-## 只保留最近七天的访问日志文件
+只保留最近七天的访问日志文件
 
 {% highlight sh %}
 
