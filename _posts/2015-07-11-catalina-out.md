@@ -6,11 +6,11 @@ category: code
 
 ---
 
-> 因为一直都使用tomcat默认日志配置才会出现这样的问题
+> 因为一直都使用tomcat默认日志配置才会出现这样的问题.
 
-<!-- more -->
+<!--more-->
 
-## 解决思路
+解决思路
 
 1. [用log4j管理tomcat的输出日志](http://blog.csdn.net/hbsong75/article/details/39432811)
 2. [过滤debug信息,特别是项目中使用的框架的debug信息](http://blog.csdn.net/zuoanren/article/details/8465958)
